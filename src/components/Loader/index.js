@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import './loader.css';
-import { THEME } from '../../THEME';
+import { THEME, setCss } from '../../THEME';
 
 export const Loader = ({ color = THEME.MAIN_COLOR }) => {
 	
 	useEffect(() => {
-		const circles = document.querySelectorAll('.lds-ring div');
-		circles.forEach((circle) => {
-			circle.style.borderColor = `${color} transparent transparent transparent`;
-		});
-	}, [color]);
+		const style = setCss(`
+		.lds-ring div{
+			border-color: ${color} transparent transparent transparent;
+		}`);
+		return () => style.remove();
+	});
 	
 	return (
 		<div className='loader-wrapper'>

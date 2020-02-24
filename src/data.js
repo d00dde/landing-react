@@ -9,7 +9,7 @@ export const data = {
 		{title: 'address', value: '8800853535', link: '#', icon: faMapMarkerAlt }
 	],
 	presentation: {
-		title: 'lorem',
+		title: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat optio, in id dolore impedit sapiente!',
 		content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci incidunt accusantium, alias sapiente odit autem unde eum cumque esse temporibus maiores neque! A exercitationem deleniti culpa eveniet laudantium necessitatibus animi. Mollitia quod dolor aperiam sunt, quos fugiat ex consequuntur voluptatum.',
 		imgSrc: '/img/present.jpg',
 		imgAlt: 'presentation'
