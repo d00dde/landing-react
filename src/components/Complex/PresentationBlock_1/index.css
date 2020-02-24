@@ -1,0 +1,18 @@
+.presentation-block {
+  display: flex;
+}
+
+.presentation-text {
+  width: 50%;
+}
+
+.presentation-title {
+
+}
+.presentation-content {
+
+}
+
+.presentation-img {
+  width: 50%;
+}

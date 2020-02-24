@@ -1,10 +1,13 @@
 import React from 'react';
 import './mainPage.css';
+import { data } from '../../data';
+import Presss from '../../components/Complex/PresentationBlock_1';
 
 export const MainPage = () => {
 	return (
-		<div className='main-page-wrapper page'>
+		<main className='main-page-wrapper page'>
 			<h2>MainPage</h2>
-		</div>
+			<Presss data={data.presentation}/>
+		</main>
 	) 
 }
