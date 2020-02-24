@@ -1,0 +1,6 @@
+export const THEME = {
+	MAIN_COLOR: '#3949ab',
+	NAV_TEXT_COLOR: '#FFF',
+	NAV_HOVER_COLOR: '#5c6bc0',
+	FOOTER_TEXT_COLOR: '#FFF',
+}

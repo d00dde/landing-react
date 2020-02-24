@@ -1,0 +1,11 @@
+.footer-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+}
+
+.footer-links {
+	list-style: none;
+	padding-right: 50px;
+}

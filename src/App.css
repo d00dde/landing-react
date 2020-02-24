@@ -1,0 +1,19 @@
+@font-face {
+      font-family: "Trade Winds";
+      src: local("Trade Winds"),
+      		 url("./fonts/TradeWinds-Regular.ttf");
+    }
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	font-family: "Trade Winds", sans-serif;
+}
+.page {
+	min-height: 70vh;
+}

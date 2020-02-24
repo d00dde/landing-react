@@ -1,0 +1,25 @@
+.nav-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 70px;
+	padding: 0 20px;
+}
+
+.nav-links {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	list-style: none;
+}
+
+.nav-wrapper .logo, 
+.nav-links li a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+	height: 70px;
+	text-decoration: none;
+}
+
