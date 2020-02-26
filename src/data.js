@@ -13,5 +13,10 @@ export const data = {
 		content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci incidunt accusantium, alias sapiente odit autem unde eum cumque esse temporibus maiores neque! A exercitationem deleniti culpa eveniet laudantium necessitatibus animi. Mollitia quod dolor aperiam sunt, quos fugiat ex consequuntur voluptatum.',
 		imgSrc: '/img/present.jpg',
 		imgAlt: 'presentation'
+	},
+	slider: {
+		slides:[
+		
+		]
 	}
 }

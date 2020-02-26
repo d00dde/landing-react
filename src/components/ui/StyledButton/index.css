@@ -1,10 +1,20 @@
 .btn {
-  display: inline-block;
   padding: 20px;
-  font-size: 1.5rem;
+  min-width: 100px;
+  text-align: center;
+  font-size: 1.2rem;
   border-radius: 10px;
+  cursor: pointer;
+  transition: background-color .3s;
+  user-select: none;
 }
-
-.secondary {
-  background-color: red;
+.primary {
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 1.5rem;
+}
+.disabled {
+	color: #d2d5db;
+	background-color: #6c7589;
+	cursor: not-allowed;
 }
