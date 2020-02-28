@@ -15,8 +15,17 @@ export const data = {
 		imgAlt: 'presentation'
 	},
 	slider: {
+		size:{
+			width:'1000px',
+			height: '600px'
+		},
 		slides:[
-		
+			{ imgPrev: '/img/preview/1.jpg', imgFull: '/img/fullsize/1.jpg', title:'Lorem', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, possimus.'},
+			{ imgPrev: '/img/preview/2.jpg', imgFull: '/img/fullsize/2.jpg', title:'Lorem', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, possimus.'},
+			{ imgPrev: '/img/preview/3.jpg', imgFull: '/img/fullsize/3.jpg', title:'Lorem', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, possimus.'},
+			{ imgPrev: '/img/preview/4.jpg', imgFull: '/img/fullsize/4.jpg', title:'Lorem', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, possimus.'},
+			{ imgPrev: '/img/preview/5.jpg', imgFull: '/img/fullsize/5.jpg', title:'Lorem', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, possimus.'},
+			{ imgPrev: '/img/preview/6.jpg', imgFull: '/img/fullsize/6.jpg', title:'Lorem', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, possimus.'},
 		]
 	}
 }
