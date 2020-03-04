@@ -15,7 +15,7 @@ export const App = () => {
       }
     `);
     return () => style.remove();
-  });
+  }, []);
 
   return (
   	<div className='container'>

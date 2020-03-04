@@ -12,7 +12,7 @@ export default ({ data:{ title, content, imgSrc, imgAlt }}) => {
       }
     `);
     return () => style.remove();
-  });
+  },[]);
   return (
 		<div className='presentation-block'>
 			<div className='presentation-text'>

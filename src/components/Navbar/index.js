@@ -26,7 +26,7 @@ export const Navbar = () => {
 				color: ${THEME.NAV_TEXT_COLOR};
 			}`);
 			return () => style.remove();
-	});
+	}, []);
 	return (
 		<nav>
 			<div className='nav-wrapper'>

@@ -10,7 +10,7 @@ export const Loader = ({ color = THEME.MAIN_COLOR }) => {
 			border-color: ${color} transparent transparent transparent;
 		}`);
 		return () => style.remove();
-	});
+	}, []);
 	
 	return (
 		<div className='loader-wrapper'>

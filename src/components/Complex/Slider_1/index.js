@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { THEME, setCss } from '../../../THEME';
 import './index.css';
 
 export default ({ 
-    data:{ slides, 
-      size:{ width = '640px', 
-      height = '420px' 
-    }},
+    data:{ 
+      slides, 
+      size:{ 
+        width = '640px', 
+        height = '420px' 
+      }
+    },
     loop = true,
-    autoplay = false
+    autoplay = false,
+    autoplayInterval = 2000,
+    onClick = () => {}
   }) => {
+  
   useEffect(() => {
     const style = setCss(`
       .slides-wrapper {
@@ -56,47 +62,60 @@ export default ({
 
     `);
     return () => style.remove();
-  });
+  }, [width, height]);
 
-  const [$slides, set$slides] = useState(null);
-  const [$pagination, set$pagination] = useState(null);
+  const $slides = useRef(null);
+  const $pagination = useRef(null);
   const [active, setActive] = useState(0);
-  
-  /*const autoplayHandler = () => {
-    const interval = setTimeout(function ($slides) {
-      setActiveHandler(active + 1);
-    }, 1000, $slides);
-    console.log(interval) 
-  }*/
-  
+
+  const setActiveHandler = useCallback((newValue) => {
+    if(!$slides.current)
+      return
+    let result;
+    if(newValue < 0)
+      result = loop ? $slides.current.length - 1 : 0;
+    else if(newValue > $slides.current.length - 1)
+      result = loop ? 0 : $slides.current.length - 1;
+    else result = newValue;
+    setActive(() => result);
+  }, [loop]);
+ 
   useEffect(() => {
-    set$slides(document.querySelectorAll('.slide'));
-    set$pagination(document.querySelectorAll('.slides-wrapper .pagination .pagination-item'));
-    //autoplayHandler();
+    $slides.current = document.querySelectorAll('.slide');
+    $pagination.current = document.querySelectorAll('.slides-wrapper .pagination .pagination-item');
   }, []);
 
   useEffect(() => {
-    if(!$slides || !$pagination)
+    if(!autoplay)
+      return;
+    const timeout = setInterval(function () {
+      setActiveHandler(active + 1);
+    }, autoplayInterval);
+    return () => clearInterval(timeout);
+  }, [active, autoplay, autoplayInterval, setActiveHandler]);
+
+  useEffect(() => {
+    if(!$slides.current || !$pagination.current)
       return
     let i = 0;
     while(i < active) {
-      $slides[i].classList.remove('active');
-      $slides[i].classList.remove('right');
-      $slides[i].classList.add('left');
+      $slides.current[i].classList.remove('active');
+      $slides.current[i].classList.remove('right');
+      $slides.current[i].classList.add('left');
       i++;
     }
-    i = $slides.length - 1;
+    i = $slides.current.length - 1;
     while(i > active) {
-      $slides[i].classList.remove('active');
-      $slides[i].classList.remove('left');
-      $slides[i].classList.add('right');
+      $slides.current[i].classList.remove('active');
+      $slides.current[i].classList.remove('left');
+      $slides.current[i].classList.add('right');
       i--;
     }
-    $slides[active].classList.remove('right');
-    $slides[active].classList.remove('left');
-    $slides[active].classList.add('active');
+    $slides.current[active].classList.remove('right');
+    $slides.current[active].classList.remove('left');
+    $slides.current[active].classList.add('active');
 
-    $pagination.forEach((item, index)=> {
+    $pagination.current.forEach((item, index)=> {
       if(index === active)
         item.classList.add('active')
       else
@@ -104,25 +123,18 @@ export default ({
     });
   }, [active, $slides, $pagination]);
 
-  const setActiveHandler = (newValue) => {
-    if(!$slides)
-      return
-    let result;
-    if(newValue < 0)
-      result = loop ? $slides.length - 1 : 0;
-    else if(newValue > $slides.length - 1)
-      result = loop ? 0 : $slides.length - 1;
-    else result = newValue;
-    setActive(() => result);
-  }
+
+
   const slidesView = slides.map((slide) => (
     <img 
       className='slide'
       key={slide.imgPrev} 
       src={slide.imgPrev} 
       alt={slide.title}
+      onClick={() => onClick(slide)}
     />
   ));
+
   const pagination = slides.map((slide, index) => (
     <div 
       onClick={() => setActiveHandler(index)}
@@ -131,6 +143,7 @@ export default ({
     >
     </div>
   ));
+
   return (
 		<div className='slider-block'>
       <div className='slides-wrapper'>

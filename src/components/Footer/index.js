@@ -17,7 +17,7 @@ export const Footer = () => {
 				color: ${THEME.FOOTER_TEXT_COLOR};
 			}`);
 		return () => style.remove();
-	});
+	}, []);
 	return (
 		<div className='footer-wrapper'>
 			<div><FontAwesomeIcon /></div>
