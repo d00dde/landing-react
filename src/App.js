@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { pages } from './pages';
+import { useModal } from './hooks/modalHook';
 import { THEME, setCss } from './THEME';
 import './App.css';
 
@@ -16,17 +17,19 @@ export const App = () => {
     `);
     return () => style.remove();
   }, []);
-
+  const { modal } = useModal();
   return (
   	<div className='container'>
-	  	<Router>
+	  	
+      <Router>
 	  		<Navbar />
   	    <Switch>
-  	    	{pages.map((page) => <Route key={page.title} path={page.path} exact>{page.component}</Route>)}
-	        <Redirect to='/' />
-				</Switch>
+          {pages.map((page) => <Route key={page.title} path={page.path} exact>{page.component}</Route>)}
+          <Redirect to='/' />
+        </Switch>
         <Footer />
 	    </Router>
+      { modal }
     </div>
   );
 }
