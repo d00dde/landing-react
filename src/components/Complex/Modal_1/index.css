@@ -12,14 +12,13 @@
 
 .modal-wrapper .content-wrapper{
 	position: relative;
-	max-width: 80%;
-	max-height: 600px;
-	
-	
+	max-width: 90%;
+	max-height: 700px;
 }
+
 .modal-wrapper .content-wrapper .content{
 	width: 100%;
-	max-height: 600px;
+	max-height: 700px;
 	overflow: auto;
 }
 

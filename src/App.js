@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { pages } from './pages';
 import { useModal } from './hooks/modalHook';
+import { ModalContext } from './contexts/modalContext';
 import { THEME, setCss } from './THEME';
 import './App.css';
 
@@ -17,16 +18,18 @@ export const App = () => {
     `);
     return () => style.remove();
   }, []);
-  const { modal } = useModal();
+  const { modal, openModal } = useModal();
   return (
   	<div className='container'>
 	  	
       <Router>
 	  		<Navbar />
-  	    <Switch>
-          {pages.map((page) => <Route key={page.title} path={page.path} exact>{page.component}</Route>)}
-          <Redirect to='/' />
-        </Switch>
+  	    <ModalContext.Provider value={{openModal}}>
+          <Switch>
+            {pages.map((page) => <Route key={page.title} path={page.path} exact>{page.component}</Route>)}
+            <Redirect to='/' />
+          </Switch>
+        </ModalContext.Provider>
         <Footer />
 	    </Router>
       { modal }
